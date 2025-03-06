@@ -6,7 +6,7 @@ const fetchMessages = async () => {
     messagesElement.innerHTML = '';
 
     try {
-        const response = await fetch('/api/messages');
+        const response = await fetch('/api/pokemon');
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }

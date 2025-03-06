@@ -18,7 +18,7 @@ const __dirname = path.dirname(__filename);
 app.use(express.static(path.join(__dirname, 'public')));
 
 // API endpoint to proxy requests to Supabase
-app.get('/api/messages', async (req, res) => {
+app.get('/api/pokemon', async (req, res) => {
   try {
     // Get the Supabase anon key from environment variables
     const supabaseUrl = process.env.SUPABASE_URL;
@@ -29,7 +29,7 @@ app.get('/api/messages', async (req, res) => {
     }
 
     // Make the request to Supabase with the API key in headers
-    const response = await fetch(`${supabaseUrl}/functions/v1/messages`, {
+    const response = await fetch(`${supabaseUrl}/functions/v1/pokemon`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -48,8 +48,8 @@ app.get('/api/messages', async (req, res) => {
     // Send the data back to the client
     res.json(data);
   } catch (error) {
-    console.error('Error fetching messages:', error);
-    res.status(500).json({ error: 'Failed to fetch messages', message: error.message });
+    console.error('Error fetching pokemon:', error);
+    res.status(500).json({ error: 'Failed to fetch pokemon', message: error.message });
   }
 });
 
